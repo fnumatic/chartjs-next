@@ -1,7 +1,7 @@
 {
     "id": "chartjs-next",
     "name": "Chart.js Next",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "minAppVersion": "0.12.7",
     "description": "Interactive Chart.js charts in Obsidian",
     "author": "fnumatic",
