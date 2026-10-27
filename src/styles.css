@@ -1,0 +1,50 @@
+/* Native color picker in the settings list */
+.chart-color-input {
+    width: 2.5rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-s);
+    background: none;
+    cursor: pointer;
+}
+
+/* Inline failure inside a note */
+div.chart-error {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--background-secondary);
+}
+
+div.chart-error pre > code {
+    color: var(--text-error);
+}
+
+/* Printed notes have no viewport to scale against */
+.print .block-language-chartjs {
+    width: 500px !important;
+}
+
+/* Help modal */
+.chartjs-help h2 {
+    margin-top: 0;
+}
+
+.chartjs-help pre {
+    padding: var(--size-4-3);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    background-color: var(--background-primary-alt);
+    overflow-x: auto;
+}
+
+.chartjs-help ul {
+    margin: var(--size-4-3) 0;
+    padding-inline-start: var(--size-4-5);
+}
+
+.chartjs-help-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--size-4-3);
+}

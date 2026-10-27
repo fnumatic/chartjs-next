@@ -1,0 +1,17 @@
+# Intellij
+*.iml
+.idea
+
+# npm
+node_modules
+
+# build
+dist/
+coverage/
+
+# local
+.vault
+data.json
+
+# agent instructions
+AGENTS.md

@@ -1,0 +1,41 @@
+{
+    "name": "chartjs-next",
+    "version": "0.0.1",
+    "description": "Interactive Chart.js charts in Obsidian",
+    "main": "main.js",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "dev": "node scripts/dev.cjs",
+        "dev:default": "node scripts/dev.cjs --default",
+        "preview": "node scripts/copy-to-vault.cjs",
+        "build": "vite build && cp manifest.json dist/",
+        "type-check": "tsc --noEmit",
+        "lint": "oxlint --fix --report-unused-disable-directives",
+        "lint:typed": "oxlint --type-aware --report-unused-disable-directives",
+        "fmt": "oxfmt",
+        "fmt:check": "oxfmt --check",
+        "check": "pnpm run fmt:check && pnpm run lint && pnpm run lint:typed && pnpm run type-check",
+        "test": "vitest run",
+        "test:watch": "vitest"
+    },
+    "keywords": [],
+    "author": "fnumatic",
+    "devDependencies": {
+        "@types/chroma-js": "^3.1.2",
+        "@types/node": "^26.6.5",
+        "happy-dom": "^21.0.3",
+        "obsidian": "^1.14.4",
+        "oxfmt": "^0.73.0",
+        "oxlint": "^1.88.0",
+        "oxlint-tsgolint": "^7.0.2004",
+        "typescript": "^7.0.2",
+        "vite": "^8.3.4",
+        "vitest": "^5.0.5"
+    },
+    "dependencies": {
+        "chart.js": "^4.5.1",
+        "chartjs-chart-sankey": "^0.19.1",
+        "chroma-js": "^3.2.0"
+    }
+}

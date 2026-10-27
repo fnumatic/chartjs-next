@@ -1,0 +1,26 @@
+{
+    "$schema": "./node_modules/oxfmt/configuration_schema.json",
+    "printWidth": 100,
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "jsxSingleQuote": false,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "sortPackageJson": false,
+    "ignorePatterns": [
+        "dist/**",
+        "coverage/**",
+        ".vault/**",
+        ".github/**",
+        "**/*.yml",
+        "**/*.yaml",
+        "pnpm-lock.yaml",
+        "tsconfig*.json",
+        "manifest.json",
+        "versions.json",
+        "**/*.md"
+    ]
+}

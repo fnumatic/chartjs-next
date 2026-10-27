@@ -1,0 +1,83 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "plugins": ["typescript", "unicorn", "oxc", "import", "promise", "vitest"],
+    "categories": {
+        "correctness": "error",
+        "suspicious": "error",
+        "perf": "warn"
+    },
+    "env": {
+        "browser": true,
+        "builtin": true,
+        "node": true
+    },
+    "ignorePatterns": ["dist/**", "coverage/**", ".vault/**"],
+    "overrides": [
+        {
+            // Test mocks use untyped vi.fn() and reference mocked methods directly.
+            "files": ["**/*.test.ts"],
+            "rules": {
+                "vitest/require-mock-type-parameters": "off",
+                "typescript/unbound-method": "off"
+            }
+        },
+        {
+            // Mocks mirror external API shapes, including empty constructors.
+            "files": ["src/__mocks__/**"],
+            "rules": {
+                "no-useless-constructor": "off"
+            }
+        },
+        {
+            // Vendored upstream adapter snippet; keeps its `_`-prefixed Chart.js internals.
+            "files": ["src/utils/date-adapter/**"],
+            "rules": {
+                "no-underscore-dangle": "off"
+            }
+        }
+    ],
+    "rules": {
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_",
+                "caughtErrorsIgnorePattern": "^_"
+            }
+        ],
+        "eqeqeq": "error",
+        "no-underscore-dangle": ["error", { "allow": ["__dirname"] }],
+        "import/no-unassigned-import": [
+            "error",
+            {
+                "allow": ["**/*.css"]
+            }
+        ],
+
+        // Static-only classes are used deliberately, so this stylistic rule is off.
+        "typescript/no-extraneous-class": "off",
+        "typescript/consistent-type-imports": [
+            "error",
+            {
+                "prefer": "type-imports",
+                "fixStyle": "separate-type-imports",
+                // Lazy-loaded modules (chart.js) must not be value-imported,
+                // so `typeof import('...')` is the only way to name their types.
+                "disallowTypeAnnotations": false
+            }
+        ],
+
+        // Type-aware rules: evaluated by `pnpm run lint:typed` (--type-aware), not by `pnpm run lint`.
+        "typescript/await-thenable": "error",
+        "typescript/no-floating-promises": "error",
+
+        // Chart YAML is assembled from arrays of labels/values; a template literal
+        // is the intended way to render them as comma-separated lists.
+        "typescript/restrict-template-expressions": ["error", { "allowArray": true }],
+
+        // Chart.js config unions and test mocks are asserted deliberately across the
+        // dataset/type matrix; replacing them needs a dedicated refactor of the
+        // configuration builder.
+        "typescript/no-unsafe-type-assertion": "off"
+    }
+}
